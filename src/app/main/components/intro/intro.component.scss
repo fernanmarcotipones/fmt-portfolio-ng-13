@@ -1,0 +1,63 @@
+#intro {
+  background: linear-gradient(325deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 50%, rgba(255,255,255,1) 100%);
+  width: 100%;
+  height: 100vh;
+
+  .intro-info {
+    font-family: 'Caveat', cursive;
+
+    .first-name {
+      font-size: 3vw;
+      animation-duration: 1s;
+    }
+
+    .last-name {
+      font-size: 4vw;
+      animation-duration: 2s;
+    }
+
+    .job-title {
+      font-size: 4vw;
+      font-family: 'Orbitron', sans-serif;
+      animation-duration: 3s;
+    }
+
+    .first-name,
+    .last-name,
+    .job-title {
+      font-weight: bold;
+      white-space: nowrap;
+      animation-name: fade-from-right;
+      animation-timing-function: ease-in;
+    }
+  }
+
+  .intro-logo {
+    width: 50%;
+    height: auto;
+    animation: logo-animation 1s linear;
+    border: 3px solid rgba(255,255,255,0.7);
+  }
+}
+
+@keyframes fade-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes logo-animation {
+  from {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
