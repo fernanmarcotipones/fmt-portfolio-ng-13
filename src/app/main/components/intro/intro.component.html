@@ -1,12 +1,17 @@
-<div id="intro" class="flex-center">
+<div id="intro" class="flex-center" [ngStyle]="{'background-position.px': '0 ' + parallaxBG}">
+  <div class="overlay"></div>
   <div class="col-6 flex-center">
-    <div class="intro-info">
-      <div class="first-name">Fernan Marco Adriansyah</div>
-      <div class="last-name">Tipones</div>
-      <div class="job-title">Software Engineer</div>
+    <div class="intro-info" @introInfoAnimation>
+      <div class="first-name" [ngStyle]="{'transform': 'translateX(' + parallaxElements + 'px)', 'opacity.%': parallaxOpacity}">Fernan Marco Adriansyah</div>
+      <div class="last-name" [ngStyle]="{'transform': 'translateX(' + parallaxElements / 2 + 'px)', 'opacity.%': parallaxOpacity}">Tipones</div>
+      <div class="job-title" [ngStyle]="{'transform': 'translateX(' + parallaxElements / 4 + 'px)', 'opacity.%': parallaxOpacity}">Software Engineer</div>
     </div>
   </div>
   <div class="col-6 flex-center">
-    <img class="intro-logo rounded-circle" src="assets/images/fmt-profile.jpg" alt="website-logo">
+    <img 
+      class="intro-logo rounded-circle"
+      src="assets/images/fmt-profile.jpg"
+      alt="website-logo"
+      [ngStyle]="{'transform': 'translateY(' + scrollPosition + 'px)'}">
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'fmt-main',
@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  @HostListener('window:scroll', ['$event'])
+  track(event: Event) {
+      this.scrollPosition = window.pageYOffset;
+  }
+
+  public scrollPosition: number = 0;
 
   constructor() { }
 
