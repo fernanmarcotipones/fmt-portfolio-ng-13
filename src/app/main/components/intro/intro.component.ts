@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { introInfoAnimation } from './intro.animations';
+import { introImageAnimation, introInfoAnimation } from './intro.animations';
 
 @Component({
   selector: 'fmt-intro',
@@ -7,6 +7,7 @@ import { introInfoAnimation } from './intro.animations';
   styleUrls: ['./intro.component.scss'],
   animations: [
     introInfoAnimation,
+    introImageAnimation,
   ],
 })
 export class IntroComponent implements OnInit {
@@ -24,6 +25,10 @@ export class IntroComponent implements OnInit {
 
   public get parallaxOpacity(): number {
     return 100 - (this.scrollPosition / 10);
+  }
+
+  public get parallaxScale(): number {
+    return 1 - (this.scrollPosition / 1000);
   }
 
   constructor() { }

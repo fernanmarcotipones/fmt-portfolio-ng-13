@@ -9,7 +9,7 @@ export class MainComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   track(event: Event) {
-      this.scrollPosition = window.pageYOffset;
+    this.scrollPosition = window.pageYOffset;
   }
 
   public scrollPosition: number = 0;

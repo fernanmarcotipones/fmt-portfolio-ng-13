@@ -6,7 +6,6 @@ import {
   transition,
   AnimationTriggerMetadata,
   stagger,
-  group,
 } from '@angular/animations';
 
 export const introInfoAnimation: AnimationTriggerMetadata = trigger('introInfoAnimation', [
@@ -17,5 +16,12 @@ export const introInfoAnimation: AnimationTriggerMetadata = trigger('introInfoAn
         animate('0.7s ease-in', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
     ]),
+  ]),
+]);
+
+export const introImageAnimation: AnimationTriggerMetadata = trigger('introImageAnimation', [
+  transition(':enter' , [
+    style({ opacity: 0, transform: 'translateY(-200px)' }),
+    animate('0.7s ease-in', style({ opacity: 1, transform: 'translateY(0)' })),
   ]),
 ]);

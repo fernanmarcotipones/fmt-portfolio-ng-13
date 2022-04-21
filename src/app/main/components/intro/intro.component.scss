@@ -14,7 +14,7 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    background: linear-gradient(325deg, rgba($color-main, 0.3) 0%, rgba($color-dark, 0.5) 75%, rgba($color-light, 0.8) 100%);
+    background: linear-gradient(325deg, rgba($color-dark, 0.3) 0%, rgba($color-main, 0.5) 50%, rgba($color-dark, 0.7) 80%);
   }
 
   .intro-info {
@@ -23,15 +23,15 @@
     z-index: 2;
 
     .first-name {
-      font-size: 3vw;
+      font-size: calc(1rem + 2vw);
     }
 
     .last-name {
-      font-size: 4vw;
+      font-size: calc(1rem + 3vw);
     }
 
     .job-title {
-      font-size: 4vw;
+      font-size: calc(1rem + 3vw);
       font-family: 'Orbitron', sans-serif;
       // color: $color-secondary;
     }
@@ -49,5 +49,8 @@
     width: 50%;
     height: auto;
     border: 3px solid rgba(255,255,255,0.3);
+    box-shadow: 5px 5px 10px rgba($color-dark, 0.5);
+    -webkit-box-shadow: 5px 5px 10px rgba($color-dark, 0.5);
+    -moz-box-shadow: 5px 5px 10px rgba($color-dark, 0.5);
   }
 }

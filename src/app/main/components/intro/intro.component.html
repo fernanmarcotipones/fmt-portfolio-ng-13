@@ -9,9 +9,10 @@
   </div>
   <div class="col-6 flex-center">
     <img 
+      @introImageAnimation
       class="intro-logo rounded-circle"
       src="assets/images/fmt-profile.jpg"
       alt="website-logo"
-      [ngStyle]="{'transform': 'translateY(' + scrollPosition + 'px)'}">
+      [ngStyle]="{'transform': 'translateY(' + parallaxElements * -1 + 'px)' + ' scale(' + parallaxScale + ')', 'opacity.%': parallaxOpacity}">
   </div>
 </div>
