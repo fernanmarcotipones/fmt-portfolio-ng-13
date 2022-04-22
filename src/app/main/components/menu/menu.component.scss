@@ -1,0 +1,168 @@
+@import '/src/styles/variables.scss';
+
+$typeSpeed: 3s;
+$typeWordCount: 25;
+$blinkSpeed: 0.5s;
+$wordDelay: calc($typeSpeed + 1s);
+$menuMarginSizeX: calc(1rem + 3vw);
+$menuMarginSizeY: calc(1rem + 1.5vw);
+
+#menu {
+  width: 100%;
+  height: 100vh;
+  font-family: "Cutive Mono", monospace;
+  position: relative;
+
+  h1.introduction {
+    width: max-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: calc(1rem + 4vw);
+    transform: translate(-50%, -50%);
+    animation: fadeOut 1s ease $wordDelay forwards;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &::before {
+      background: white;
+      animation: type $typeSpeed steps($typeWordCount) forwards;
+    }
+
+    &::after {
+      width: 0.05em;
+      background: black;
+      animation: type $typeSpeed steps($typeWordCount) forwards, blink $blinkSpeed steps($typeWordCount) infinite;
+    }
+  }
+
+  .menu-content {
+    opacity: 0;
+    animation: fadeIn 1s ease calc($wordDelay + 1s) forwards;
+
+    .title {
+      h1 {
+        font-size: calc(1rem + 1.5vw);
+      }
+    }
+
+    .menu-items {
+      font-family: 'Caveat', cursive;
+
+      a.link {
+        font-size: calc(1rem + 1vw);
+        color: $color-dark;
+        position: absolute;
+        text-decoration: none;
+        padding: calc(1rem + 1vw);
+        border-radius: 100%;
+        border: 1px solid black;
+        line-height: 1.2;
+        font-weight: 400;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          text-decoration: underline;
+          // border-bottom: 3px solid $color-dark;
+          cursor: pointer;
+          transform: scale(1.2);
+        }
+      }
+
+      a.myself {
+        top: 0;
+        left: 0;
+        margin-top: $menuMarginSizeY;
+        margin-left: $menuMarginSizeX;
+      }
+
+      a.education {
+        bottom: 0;
+        left: 0;
+        margin-bottom: $menuMarginSizeY;
+        margin-left: $menuMarginSizeX;
+      }
+
+      a.skills {
+        top: 0;
+        right: 0;
+        margin-top: $menuMarginSizeY;
+        margin-right: $menuMarginSizeX;
+      }
+
+      a.experience {
+        bottom: 0;
+        right: 0;
+        margin-bottom: $menuMarginSizeY;
+        margin-right: $menuMarginSizeX;
+      }
+
+      a.contact {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        margin-bottom: $menuMarginSizeY;
+      }
+    }
+
+    .cloud,
+    .cloud:before,
+    .cloud:after {
+      content: "";
+      background: $color-dark;
+      display: block;
+      position: absolute;
+      left: 25%;
+      top: 15%;
+      border-radius: 100%;
+      width: 170px;
+      height: 60px;
+      z-index: 1;
+    }
+    .cloud:before {
+      width: 125px;
+      height: 65px;
+      top: -22px;
+      border-radius: 50%;
+      left: 24px;
+    }
+    .cloud:after {
+      width: 58px;
+      height: 48px;
+      top: -35px;
+      left: 57px;
+    }
+  }
+
+  @keyframes type {
+    to {
+      left: 100%;
+    }
+  }
+
+  @keyframes blink {
+    to {
+      background: transparent;
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+  }
+}

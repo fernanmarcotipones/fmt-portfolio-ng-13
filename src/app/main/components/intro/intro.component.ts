@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { introImageAnimation, introInfoAnimation } from './intro.animations';
+import { introImageAnimation, introInfoAnimation } from './intro.animation';
 
 @Component({
   selector: 'fmt-intro',

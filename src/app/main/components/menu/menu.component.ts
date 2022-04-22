@@ -2,13 +2,13 @@ import { AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild } fro
 
 @Component({
   selector: 'fmt-about-me',
-  templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.scss']
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
-export class AboutMeComponent implements OnInit, AfterViewChecked {
+export class MenuComponent implements OnInit, AfterViewChecked {
 
-  @ViewChild('aboutMe')
-  public aboutMe!: ElementRef;
+  @ViewChild('menu')
+  public menu!: ElementRef;
 
   @Input()
   public scrollPosition: number = 0;
@@ -21,7 +21,7 @@ export class AboutMeComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (this.aboutMe.nativeElement.getBoundingClientRect().top <= 0) {
+    if (this.menu.nativeElement.getBoundingClientRect().top <= 0) {
       setTimeout(() => {
         this.showContent = true;
       });
