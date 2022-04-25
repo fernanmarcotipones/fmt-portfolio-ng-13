@@ -1,16 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/shared/content.service';
+import { ContentBase } from '../../../shared/content-base';
 
 @Component({
   selector: 'fmt-education',
   templateUrl: './education.component.html',
   styleUrls: ['./education.component.scss']
 })
-export class EducationComponent implements OnInit {
+export class EducationComponent extends ContentBase implements OnInit {
 
-  @Input()
-  public scrollPosition: number = 0;
-
-  constructor() { }
+  constructor(contentService: ContentService) {
+    super(contentService);
+  }
 
   ngOnInit(): void {
   }

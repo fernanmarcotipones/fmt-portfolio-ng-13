@@ -1,28 +1,25 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/shared/content.service';
+import { ContentBase } from '../../../shared/content-base';
 
 @Component({
   selector: 'fmt-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent extends ContentBase implements OnInit {
 
-  @Input()
-  public scrollPosition: number = 0;
-  
-  @Input()
   public activeContent: string ='menu';
 
-  @Output()
-  public activeContentChange = new EventEmitter<string>();
-
-  constructor() { }
+  constructor(contentService: ContentService) {
+    super(contentService);
+  }
 
   ngOnInit(): void {
   }
 
   public changeContent(content: string): void {
-    this.activeContentChange.emit(content);
+    this.contentService.setActiveContent(content);
   }
 
 }

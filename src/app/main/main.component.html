@@ -1,15 +1,18 @@
 <div id="main">
-  <fmt-intro [scrollPosition]="scrollPosition"></fmt-intro>
-  <div id="content" #content>
+  <fmt-intro></fmt-intro>
+  <div id="container" #content>
     <ng-container *ngIf="showContent">
-      <ng-container [ngSwitch]="activeContent">
-        <fmt-menu *ngSwitchCase="'menu'" [scrollPosition]="scrollPosition" [(activeContent)]="activeContent"></fmt-menu>
-        <fmt-about-me *ngSwitchCase="'about-me'" [scrollPosition]="scrollPosition"></fmt-about-me>
-        <fmt-education *ngSwitchCase="'education'" [scrollPosition]="scrollPosition"></fmt-education>
-        <fmt-skills *ngSwitchCase="'skills'" [scrollPosition]="scrollPosition"></fmt-skills>
-        <fmt-experiences *ngSwitchCase="'experiences'" [scrollPosition]="scrollPosition"></fmt-experiences>
-        <fmt-contact-me *ngSwitchCase="'contact-me'" [scrollPosition]="scrollPosition"></fmt-contact-me>
-      </ng-container>
+      <h1 class="introduction">Hello, my name is Fernan.</h1>
+      <div class="content">
+        <ng-container [ngSwitch]="activeContent">
+          <fmt-menu @rightContentAnimation *ngSwitchCase="'menu'"></fmt-menu>
+          <fmt-about-me @leftContentAnimation *ngSwitchCase="'about-me'"></fmt-about-me>
+          <fmt-education @leftContentAnimation *ngSwitchCase="'education'"></fmt-education>
+          <fmt-skills @rightContentAnimation *ngSwitchCase="'skills'"></fmt-skills>
+          <fmt-experiences @rightContentAnimation *ngSwitchCase="'experiences'"></fmt-experiences>
+          <fmt-contact-me *ngSwitchCase="'contact-me'"></fmt-contact-me>
+        </ng-container>
+      </div>
     </ng-container>
   </div>
 </div>

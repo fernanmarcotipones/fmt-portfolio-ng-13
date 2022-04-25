@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContentService } from 'src/app/shared/content.service';
+import { ContentBase } from '../../../shared/content-base';
 import { introImageAnimation, introInfoAnimation } from './intro.animation';
 
 @Component({
@@ -10,10 +12,7 @@ import { introImageAnimation, introInfoAnimation } from './intro.animation';
     introImageAnimation,
   ],
 })
-export class IntroComponent implements OnInit {
-
-  @Input()
-  public scrollPosition: number = 0;
+export class IntroComponent extends ContentBase implements OnInit {
 
   public get parallaxBG(): number {
     return this.scrollPosition * -2;
@@ -31,7 +30,9 @@ export class IntroComponent implements OnInit {
     return 1 - (this.scrollPosition / 1000);
   }
 
-  constructor() { }
+  constructor(contentService: ContentService) {
+    super(contentService);
+  }
 
   ngOnInit(): void {
   }
