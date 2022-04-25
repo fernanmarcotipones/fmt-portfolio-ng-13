@@ -1,31 +1,28 @@
-import { AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'fmt-about-me',
+  selector: 'fmt-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit, AfterViewChecked {
-
-  @ViewChild('menu')
-  public menu!: ElementRef;
+export class MenuComponent implements OnInit {
 
   @Input()
   public scrollPosition: number = 0;
+  
+  @Input()
+  public activeContent: string ='menu';
 
-  public showContent: boolean = false;
+  @Output()
+  public activeContentChange = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewChecked() {
-    if (this.menu.nativeElement.getBoundingClientRect().top <= 0) {
-      setTimeout(() => {
-        this.showContent = true;
-      });
-    }
+  public changeContent(content: string): void {
+    this.activeContentChange.emit(content);
   }
 
 }

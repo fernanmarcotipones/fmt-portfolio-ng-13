@@ -1,20 +1,15 @@
 <div #menu id="menu" class="flex-center">
-  <div *ngIf="showContent" class="content">
-    <h1 class="introduction">Hello, my name is Fernan.</h1>
-    <div class="menu-content">
-      <div class="title flex-center">
-        <h1>What do you want to know about me ?</h1>
-      </div>
-      <div class="menu-items">
-        <a class="link myself">About Myself ?</a>
-        <a class="link education">My Education ?</a>
-        <a class="link skills">My Skills ?</a>
-        <a class="link experience">My Work Experiences ?</a>
-        <a class="link contact">How to Contact Me ?</a>
-      </div>
-      <!-- <div class="cloud flex-center text-light">
-        Hello
-      </div> -->
+  <h1 class="introduction">Hello, my name is Fernan.</h1>
+  <div class="menu-content">
+    <div class="title flex-center">
+      <h1>What do you want to know about me ?</h1>
+    </div>
+    <div class="menu-items">
+      <button class="link myself" (click)="changeContent('about-me')">About Myself ?</button>
+      <button class="link education" (click)="changeContent('education')">My Education ?</button>
+      <button class="link skills" (click)="changeContent('skills')">My Skills ?</button>
+      <button class="link experience" (click)="changeContent('experiences')">My Work Experiences ?</button>
+      <button class="link contact" (click)="changeContent('contact-me')">How to Contact Me ?</button>
     </div>
   </div>
 </div>

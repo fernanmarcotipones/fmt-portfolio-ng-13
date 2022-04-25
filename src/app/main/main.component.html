@@ -1,4 +1,15 @@
 <div id="main">
   <fmt-intro [scrollPosition]="scrollPosition"></fmt-intro>
-  <fmt-about-me [scrollPosition]="scrollPosition"></fmt-about-me>
+  <div id="content" #content>
+    <ng-container *ngIf="showContent">
+      <ng-container [ngSwitch]="activeContent">
+        <fmt-menu *ngSwitchCase="'menu'" [scrollPosition]="scrollPosition" [(activeContent)]="activeContent"></fmt-menu>
+        <fmt-about-me *ngSwitchCase="'about-me'" [scrollPosition]="scrollPosition"></fmt-about-me>
+        <fmt-education *ngSwitchCase="'education'" [scrollPosition]="scrollPosition"></fmt-education>
+        <fmt-skills *ngSwitchCase="'skills'" [scrollPosition]="scrollPosition"></fmt-skills>
+        <fmt-experiences *ngSwitchCase="'experiences'" [scrollPosition]="scrollPosition"></fmt-experiences>
+        <fmt-contact-me *ngSwitchCase="'contact-me'" [scrollPosition]="scrollPosition"></fmt-contact-me>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>

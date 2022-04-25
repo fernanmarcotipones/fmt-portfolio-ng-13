@@ -9,7 +9,7 @@ $menuMarginSizeY: calc(1rem + 1.5vw);
 
 #menu {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: "Cutive Mono", monospace;
   position: relative;
 
@@ -57,7 +57,7 @@ $menuMarginSizeY: calc(1rem + 1.5vw);
     .menu-items {
       font-family: 'Caveat', cursive;
 
-      a.link {
+      button.link {
         font-size: calc(1rem + 1vw);
         color: $color-dark;
         position: absolute;
@@ -77,68 +77,44 @@ $menuMarginSizeY: calc(1rem + 1.5vw);
         }
       }
 
-      a.myself {
+      button.myself {
         top: 0;
         left: 0;
         margin-top: $menuMarginSizeY;
         margin-left: $menuMarginSizeX;
       }
 
-      a.education {
+      button.education {
         bottom: 0;
         left: 0;
         margin-bottom: $menuMarginSizeY;
         margin-left: $menuMarginSizeX;
       }
 
-      a.skills {
+      button.skills {
         top: 0;
         right: 0;
         margin-top: $menuMarginSizeY;
         margin-right: $menuMarginSizeX;
       }
 
-      a.experience {
+      button.experience {
         bottom: 0;
         right: 0;
         margin-bottom: $menuMarginSizeY;
         margin-right: $menuMarginSizeX;
       }
 
-      a.contact {
+      button.contact {
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 0);
         margin-bottom: $menuMarginSizeY;
-      }
-    }
 
-    .cloud,
-    .cloud:before,
-    .cloud:after {
-      content: "";
-      background: $color-dark;
-      display: block;
-      position: absolute;
-      left: 25%;
-      top: 15%;
-      border-radius: 100%;
-      width: 170px;
-      height: 60px;
-      z-index: 1;
-    }
-    .cloud:before {
-      width: 125px;
-      height: 65px;
-      top: -22px;
-      border-radius: 50%;
-      left: 24px;
-    }
-    .cloud:after {
-      width: 58px;
-      height: 48px;
-      top: -35px;
-      left: 57px;
+        &:hover {
+          transform: translate(-50%, 0) scale(1.2);
+        }
+      }
     }
   }
 
