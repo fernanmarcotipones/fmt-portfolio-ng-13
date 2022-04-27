@@ -20,6 +20,25 @@ export class MenuComponent extends ContentBase implements OnInit {
 
   public changeContent(content: string): void {
     this.contentService.setActiveContent(content);
+    this.changeContentPosition(content);
+  }
+
+  private changeContentPosition (content: string): void {
+    switch(content) {
+      case 'about-me':
+      case 'education':
+        this.contentService.setContentPosition('left');
+        break;
+      case 'skills':
+      case 'experiences':
+        this.contentService.setContentPosition('right');
+        break;
+      case 'contact-me':
+        this.contentService.setContentPosition('bottom');
+        break;
+      default:
+        break;
+    }
   }
 
 }

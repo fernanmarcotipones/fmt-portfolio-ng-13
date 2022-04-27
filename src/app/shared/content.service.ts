@@ -4,8 +4,14 @@ import { Injectable } from "@angular/core";
 export class ContentService {
 
   public activeContent: string = 'menu';
+
+  public contentPosition: string = 'mid';
   
-  setActiveContent(content: string) {
+  public setActiveContent(content: string) {
     this.activeContent = content;
+  }
+
+  public setContentPosition(position: string): void {
+    this.contentPosition = position;
   }
 }
