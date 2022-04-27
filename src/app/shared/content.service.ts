@@ -1,17 +1,18 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
 export class ContentService {
 
-  public activeContent: string = 'menu';
+  public activeContent = new BehaviorSubject<string>('menu');
 
-  public contentPosition: string = 'mid';
-  
-  public setActiveContent(content: string) {
-    this.activeContent = content;
+  public contentPosition = new BehaviorSubject<string>('mid');
+
+  public setActiveContent(content: string): void {
+    this.activeContent.next(content);
   }
 
   public setContentPosition(position: string): void {
-    this.contentPosition = position;
+    this.contentPosition.next(position);
   }
 }

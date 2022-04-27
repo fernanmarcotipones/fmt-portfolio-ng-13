@@ -7,7 +7,7 @@ import { ContentService } from "./content.service";
 export class ContentBase {
 
   @HostListener('window:scroll', ['$event'])
-  track(event: Event) {
+  track() {
     this.scrollPosition = window.pageYOffset;
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { bottomContentAnimation, leftContentAnimation, menuAnimation, rightContentAnimation } from '../shared/content.animation';
 import { ContentService } from '../shared/content.service';
 
@@ -13,33 +14,49 @@ import { ContentService } from '../shared/content.service';
     bottomContentAnimation,
   ]
 })
-export class MainComponent implements OnInit, AfterViewChecked {
+export class MainComponent implements OnInit, OnDestroy {
+
+  @HostListener('window:scroll', ['$event'])
+  track() {
+    if (this.content.nativeElement.getBoundingClientRect().top <= 0) {
+      this.showContent = true;
+    }
+  }
 
   @ViewChild('content')
   public content!: ElementRef;
 
   public showContent: boolean = false;
   
-  public activeContent: string = 'menu';
+  public activeContent!: string;
 
-  public contentPosition: string = 'mid';
+  public contentPosition!: string;
+
+  public contentSub!: Subscription;
+
+  public positionSub!: Subscription;
 
   constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
-  }
+    this.contentSub = this.contentService.activeContent.subscribe(content => {
+      console.log('contentSub', content);
+      this.activeContent = content;
+    });
 
-  ngAfterViewChecked(): void {
-    setTimeout(() => this.activeContent = this.contentService.activeContent);
-    setTimeout(() => this.contentPosition = this.contentService.contentPosition);
-    
-    if (this.content.nativeElement.getBoundingClientRect().top <= 0) {
-      setTimeout(() => this.showContent = true);
-    }
+    this.positionSub = this.contentService.contentPosition.subscribe(position => {
+      console.log('positionSub', position);
+      this.contentPosition = position;
+    });
   }
 
   onAnimationEvent(event: any) {
     console.log('animation', event);
+  }
+
+  ngOnDestroy(): void {
+    this.contentSub.unsubscribe();
+    this.positionSub.unsubscribe();
   }
   
 }

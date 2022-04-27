@@ -49,27 +49,27 @@ export const bottomContentAnimation: AnimationTriggerMetadata = trigger('bottomC
 ]);
 
 export const menuAnimation: AnimationTriggerMetadata = trigger('menuAnimation', [
-  transition('* => left' , [
+  transition('void => left' , [
     style({ transform: rightPosition }),
     animate(animationTiming, style({ transform: defaultPosition })),
   ]),
-  transition('left => *' , [
+  transition('left => void' , [
     style({ transform: defaultPosition }),
     animate(animationTiming, style({ transform: rightPosition })),
   ]),
-  transition('* => right' , [
+  transition('void => right' , [
     style({ transform: leftPosition }),
     animate(animationTiming, style({ transform: defaultPosition })),
   ]),
-  transition('right => *' , [
+  transition('right => void' , [
     style({ transform: defaultPosition }),
     animate(animationTiming, style({ transform: leftPosition })),
   ]),
-  transition('* => bottom' , [
+  transition('void => bottom' , [
     style({ transform: topPosition }),
     animate(animationTiming, style({ transform: defaultPosition })),
   ]),
-  transition('bottom => *' , [
+  transition('bottom => void' , [
     style({ transform: defaultPosition }),
     animate(animationTiming, style({ transform: topPosition })),
   ]),

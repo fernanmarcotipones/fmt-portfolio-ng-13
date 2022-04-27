@@ -19,8 +19,12 @@ export class MenuComponent extends ContentBase implements OnInit {
   }
 
   public changeContent(content: string): void {
-    this.contentService.setActiveContent(content);
     this.changeContentPosition(content);
+
+    // Need to timeout to make sure the position will updated first before the animation triggers when the content changes.
+    setTimeout(() => {
+      this.contentService.setActiveContent(content);
+    });
   }
 
   private changeContentPosition (content: string): void {
