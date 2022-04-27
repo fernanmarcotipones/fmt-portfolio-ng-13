@@ -5,11 +5,7 @@
       <h1 class="introduction">Hello, my name is Fernan.</h1>
       <div class="content">
         <ng-container [ngSwitch]="activeContent">
-          <fmt-menu 
-            *ngSwitchCase="'menu'"
-            [@menuAnimation]="contentPosition"
-            (@menuAnimation.start)="onAnimationEvent($event)">
-          </fmt-menu>
+          <fmt-menu [@menuAnimation]="contentPosition" *ngSwitchCase="'menu'"></fmt-menu>
           <fmt-about-me @leftContentAnimation *ngSwitchCase="'about-me'"></fmt-about-me>
           <fmt-education @leftContentAnimation *ngSwitchCase="'education'"></fmt-education>
           <fmt-skills @rightContentAnimation *ngSwitchCase="'skills'"></fmt-skills>

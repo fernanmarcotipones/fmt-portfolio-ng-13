@@ -40,18 +40,12 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.contentSub = this.contentService.activeContent.subscribe(content => {
-      console.log('contentSub', content);
       this.activeContent = content;
     });
 
     this.positionSub = this.contentService.contentPosition.subscribe(position => {
-      console.log('positionSub', position);
       this.contentPosition = position;
     });
-  }
-
-  onAnimationEvent(event: any) {
-    console.log('animation', event);
   }
 
   ngOnDestroy(): void {
