@@ -1,3 +1,25 @@
-<div id="about-me">
-  <button class="btn btn-primary" (click)="backToMenu()">Back</button>
+<div #aboutMe id="about-me" [ngStyle]="{'height.vh': totalHeight}">
+  <div *ngIf="showContent" class="content">
+    <div class="title">
+      <h1>About Me</h1>
+    </div>
+    <div class="timeline flex-center">
+      <div class="tracker flex-center">
+        <div class="cover" [ngStyle]="{'top.%': coverPosition}"></div>
+        <div class="line">
+          <div *ngFor="let data of aboutMeData" class="point"></div>
+        </div>
+      </div>
+      <div class="details">
+        <ng-container *ngFor="let data of aboutMeData; let i = index;">
+          <div *ngIf="showTimeline(i)">
+            <h1>{{data.year}}</h1>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <button class="btn" (click)="backToMenu()">
+      <fa-icon [icon]="backButtonIcon" size="6x"></fa-icon>
+    </button>
+  </div>
 </div>

@@ -13,6 +13,8 @@ export class ContentBase {
 
   public scrollPosition: number = 0;
 
+  public showContent: boolean = false;
+
   constructor(protected contentService: ContentService) { }
 
   public backToMenu(): void {

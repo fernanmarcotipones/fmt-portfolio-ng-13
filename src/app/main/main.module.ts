@@ -8,6 +8,7 @@ import { EducationComponent } from './components/education/education.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { ContactMeComponent } from './components/contact-me/contact-me.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,9 @@ import { ContactMeComponent } from './components/contact-me/contact-me.component
     ExperiencesComponent,
     ContactMeComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+  ],
 })
 export class MainModule { }

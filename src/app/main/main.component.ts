@@ -48,6 +48,10 @@ export class MainComponent implements OnInit, OnDestroy {
     });
   }
 
+  public showSubContent(subComponent: any) {
+    subComponent.showContent = true;
+  }
+
   ngOnDestroy(): void {
     this.contentSub.unsubscribe();
     this.positionSub.unsubscribe();

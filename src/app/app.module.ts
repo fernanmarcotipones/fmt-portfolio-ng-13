@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { ContentService } from './shared/content.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { ContentService } from './shared/content.service';
     AppRoutingModule,
     MainModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [ContentService],
   bootstrap: [AppComponent]

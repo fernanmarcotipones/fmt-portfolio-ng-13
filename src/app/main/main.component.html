@@ -6,7 +6,12 @@
       <div class="content">
         <ng-container [ngSwitch]="activeContent">
           <fmt-menu [@menuAnimation]="contentPosition" *ngSwitchCase="'menu'"></fmt-menu>
-          <fmt-about-me @leftContentAnimation *ngSwitchCase="'about-me'"></fmt-about-me>
+          <fmt-about-me 
+            #AboutMeComponent
+            *ngSwitchCase="'about-me'"
+            @leftContentAnimation
+            (@leftContentAnimation.done)="showSubContent(AboutMeComponent)">
+          </fmt-about-me>
           <fmt-education @leftContentAnimation *ngSwitchCase="'education'"></fmt-education>
           <fmt-skills @rightContentAnimation *ngSwitchCase="'skills'"></fmt-skills>
           <fmt-experiences @rightContentAnimation *ngSwitchCase="'experiences'"></fmt-experiences>
