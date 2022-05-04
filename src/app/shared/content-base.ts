@@ -17,7 +17,12 @@ export class ContentBase {
 
   constructor(protected contentService: ContentService) { }
 
-  public backToMenu(): void {
-    this.contentService.setActiveContent('menu');
+  public backToMenu(element: HTMLElement): void {
+    element.scrollIntoView();
+    const delay = (element.getBoundingClientRect().top * -1) / 20;
+
+    setTimeout(() => {
+      this.contentService.setActiveContent('menu');
+    }, delay)
   }
 }

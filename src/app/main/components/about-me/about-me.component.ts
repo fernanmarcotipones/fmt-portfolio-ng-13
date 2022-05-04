@@ -37,11 +37,11 @@ export class AboutMeComponent extends ContentBase implements OnInit {
   public backButtonIcon: IconProp = faChevronRight;
 
   public aboutMeData: any[] = [
-    { title: 'title-1', content: 'content-1', year: '1994' },
-    { title: 'title-2', content: 'content-2', year: '1999' },
-    { title: 'title-3', content: 'content-3', year: '2008' },
-    { title: 'title-4', content: 'content-4', year: '2016' },
-    { title: 'title-5', content: 'content-5', year: '2017' },
+    { title: 'Early Life', content: 'content-1', year: '1994' },
+    { title: 'Growing up in Indonesia', content: 'content-2', year: '1995' },
+    { title: 'Back to Philippines', content: 'content-3', year: '2008' },
+    { title: 'Graduated in Naga City', content: 'content-4', year: '2016' },
+    { title: 'Working in Makati', content: 'content-5', year: '2017' },
   ];
 
   public get totalHeight(): number {

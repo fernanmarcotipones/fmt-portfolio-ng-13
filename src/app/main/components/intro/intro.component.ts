@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ContentService } from 'src/app/shared/content.service';
 import { ContentBase } from '../../../shared/content-base';
 import { introImageAnimation, introInfoAnimation } from './intro.animation';
@@ -13,6 +13,16 @@ import { introImageAnimation, introInfoAnimation } from './intro.animation';
   ],
 })
 export class IntroComponent extends ContentBase implements OnInit {
+
+  @HostListener('window:scroll', ['$event'])
+  override track(): void {
+    if (this.intro.nativeElement.getBoundingClientRect().bottom >= 0) {
+      this.scrollPosition = window.pageYOffset;
+    }
+  }
+
+  @ViewChild('intro')
+  public intro!: ElementRef;
 
   public get parallaxBG(): number {
     return this.scrollPosition * -2;

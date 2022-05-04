@@ -7,18 +7,20 @@
       <div class="tracker flex-center">
         <div class="cover" [ngStyle]="{'top.%': coverPosition}"></div>
         <div class="line">
-          <div *ngFor="let data of aboutMeData" class="point"></div>
+          <div *ngFor="let data of aboutMeData; let i = index;" class="point flex-center" [ngClass]="{'active': showTimeline(i)}">
+            <span>{{data.year}}</span>
+          </div>
         </div>
       </div>
       <div class="details">
         <ng-container *ngFor="let data of aboutMeData; let i = index;">
           <div *ngIf="showTimeline(i)">
-            <h1>{{data.year}}</h1>
+            <h1>{{data.title}}</h1>
           </div>
         </ng-container>
       </div>
     </div>
-    <button class="btn" (click)="backToMenu()">
+    <button class="btn" (click)="backToMenu(aboutMe)">
       <fa-icon [icon]="backButtonIcon" size="6x"></fa-icon>
     </button>
   </div>
