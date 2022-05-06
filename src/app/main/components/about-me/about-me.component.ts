@@ -5,6 +5,11 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { leftContentAnimation } from 'src/app/shared/content.animation';
 
+interface TimelineScope {
+  min: number;
+  max: number;
+}
+
 @Component({
   selector: 'fmt-about-me',
   templateUrl: './about-me.component.html',
@@ -16,8 +21,10 @@ export class AboutMeComponent extends ContentBase implements OnInit {
   @HostListener('window:scroll', ['$event'])
   override track(): void {
     if (this.aboutMe.nativeElement.getBoundingClientRect().top <= 0) {
+      this.showTimeline = true;
       this.scrollPosition = this.aboutMe.nativeElement.getBoundingClientRect().top * -1;
     } else {
+      this.showTimeline = false;
       this.scrollPosition = 0;
     }
 
@@ -34,14 +41,22 @@ export class AboutMeComponent extends ContentBase implements OnInit {
 
   public timelineHeight!: number
 
+  public showTimeline: boolean = false;
+
   public backButtonIcon: IconProp = faChevronRight;
 
+  private mockImages: string[] = [
+    'assets/images/timeline1.jpg',
+    'assets/images/timeline2.jpg',
+    'assets/images/timeline3.jpg',
+  ];
+
   public aboutMeData: any[] = [
-    { title: 'Early Life', content: 'content-1', year: '1994' },
-    { title: 'Growing up in Indonesia', content: 'content-2', year: '1995' },
-    { title: 'Back to Philippines', content: 'content-3', year: '2008' },
-    { title: 'Graduated in Naga City', content: 'content-4', year: '2016' },
-    { title: 'Working in Makati', content: 'content-5', year: '2017' },
+    { title: 'Early Life', content: 'content-1', year: '1994', images: this.mockImages },
+    { title: 'Growing up in Indonesia', content: 'content-2', year: '1995', images: this.mockImages },
+    { title: 'Back to Philippines', content: 'content-3', year: '2008', images: this.mockImages },
+    { title: 'Graduated in Naga City', content: 'content-4', year: '2016', images: this.mockImages },
+    { title: 'Working in Makati', content: 'content-5', year: '2017', images: this.mockImages },
   ];
 
   public get totalHeight(): number {
@@ -59,15 +74,26 @@ export class AboutMeComponent extends ContentBase implements OnInit {
   ngOnInit(): void {
   }
 
-  public showTimeline(index: number): boolean {
-    if (this.scrollPosition === 0) {
+  public getTimelineScope(index: number): TimelineScope {
+    const min = this.timelineHeight * index;
+    const max = min + this.timelineHeight;
+    const scope: TimelineScope = { min, max }
+
+    return scope;
+  }
+
+  public showTimelineContent(index: number): boolean {
+    if (this.scrollPosition < 0) {
       return false;
     }
 
-    const minHeight = this.timelineHeight * index;
-    const maxHeight = minHeight + this.timelineHeight;
-    
-    return this.scrollPosition >= minHeight && this.scrollPosition < maxHeight;
+    const timelineScope: TimelineScope = this.getTimelineScope(index);
+    return this.scrollPosition >= timelineScope.min && this.scrollPosition < timelineScope.max;
+  }
+
+  public scrollToTimeline(index: number): void {
+    const timelineScope: TimelineScope = this.getTimelineScope(index);
+    window.scrollTo(0,timelineScope.max);
   }
 
 }

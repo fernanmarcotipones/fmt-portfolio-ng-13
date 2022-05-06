@@ -35,7 +35,12 @@ $slideSpeed: 3s;
 
     .title {
       height: 20%;
+
+      h1 {
+        font-size: calc(1rem + 4vw);
+      }
     }
+
     .timeline {
       height: 80%;
 
@@ -77,11 +82,12 @@ $slideSpeed: 3s;
             z-index: 2;
             transition: all 0.5s ease-in-out;
 
-            &.active {
+            &.active, &:hover {
               font-weight: bold;
               background: #fff;
               transform: scale(1.5);
               border: 5px solid $color-dark;
+              cursor: pointer;
             }
           }
         }
@@ -92,14 +98,17 @@ $slideSpeed: 3s;
         width: 90%;
         height: 100%;
         padding: calc(1rem + 2vw);
-        border: 1px solid $color-dark;
+        // border: 1px solid $color-dark;
+
+        .subtitle {
+          font-size: calc(1rem + 2vw);
+        }
       }
     }
   }
 
   h1 {
     position: relative;
-    font-size: calc(1rem + 4vw);
 
     &::after {
       content: "";

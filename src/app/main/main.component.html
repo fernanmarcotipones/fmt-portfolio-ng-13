@@ -1,4 +1,4 @@
-<div id="main">
+<div id="main" #main>
   <fmt-intro></fmt-intro>
   <div id="container" #content>
     <ng-container *ngIf="showContent">
@@ -19,5 +19,9 @@
         </ng-container>
       </div>
     </ng-container>
+  </div>
+  <div *ngIf="!isBottomPage" class="instruction">
+    <h2>Scroll</h2>
+    <fa-icon [icon]="scrollDownIcon" size="4x"></fa-icon>
   </div>
 </div>

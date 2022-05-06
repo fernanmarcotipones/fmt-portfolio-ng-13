@@ -4,73 +4,97 @@ $typeSpeed: 3s;
 $typeWordCount: 25;
 $blinkSpeed: 0.5s;
 $wordDelay: calc($typeSpeed + 1s);
+$bounceSpeed: 1.5s;
 
-#container {
-  width: 100%;
-  height: 100vh;
+#main {
   font-family: "Cutive Mono", monospace;
   position: relative;
 
-  h1.introduction {
-    width: max-content;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: calc(1rem + 4vw);
-    transform: translate(-50%, -50%);
-    animation: fadeOut 1s ease $wordDelay forwards;
-
-    &::after,
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-
-    &::before {
-      background: white;
-      animation: type $typeSpeed steps($typeWordCount) forwards;
-    }
-
-    &::after {
-      width: 0.05em;
-      background: black;
-      animation: type $typeSpeed steps($typeWordCount) forwards, blink $blinkSpeed steps($typeWordCount) infinite;
-    }
-  }
-
-  .content {
+  #container {
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    animation: fadeIn 1s ease calc($wordDelay + 1s) forwards;
+    height: 100vh;
     position: relative;
+  
+    h1.introduction {
+      width: max-content;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: calc(1rem + 4vw);
+      transform: translate(-50%, -50%);
+      animation: fadeOut 1s ease $wordDelay forwards;
+  
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+  
+      &::before {
+        background: white;
+        animation: type $typeSpeed steps($typeWordCount) forwards;
+      }
+  
+      &::after {
+        width: 0.05em;
+        background: black;
+        animation: type $typeSpeed steps($typeWordCount) forwards, blink $blinkSpeed steps($typeWordCount) infinite;
+      }
+    }
+  
+    .content {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      animation: fadeIn 1s ease calc($wordDelay + 1s) forwards;
+      position: relative;
+    }
   }
 
-  @keyframes type {
-    to {
-      left: 100%;
+  .instruction {
+    right: 1%;
+    bottom: 3%;
+    z-index: 3;
+    position: fixed;
+    text-align: center;
+    animation: bounce $bounceSpeed infinite;
+    
+    h2 {
+      font-weight: bold;
     }
+  }
+  
+  @keyframes type {
+    to { left: 100% }
   }
 
   @keyframes blink {
-    to {
-      background: transparent;
-    }
+    to { background: transparent }
   }
 
   @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
+    to { opacity: 1 }
   }
 
   @keyframes fadeOut {
-    to {
-      opacity: 0;
+    to { opacity: 0 }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+      animation-timing-function: ease-in;
+    }
+    50% {
+      transform: translateY(1rem);
+      animation-timing-function: ease-out;	
+    }
+    100% {
+      transform: translateY(0);	
     }
   }
 }

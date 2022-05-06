@@ -18,6 +18,8 @@ export class ContentBase {
   constructor(protected contentService: ContentService) { }
 
   public backToMenu(element: HTMLElement): void {
+    console.log('back', element);
+    
     element.scrollIntoView();
     const delay = (element.getBoundingClientRect().top * -1) / 20;
 

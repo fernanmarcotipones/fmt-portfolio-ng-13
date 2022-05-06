@@ -3,19 +3,24 @@
     <div class="title">
       <h1>About Me</h1>
     </div>
-    <div class="timeline flex-center">
+    <div *ngIf="showTimeline" class="timeline flex-center" @leftContentAnimation>
       <div class="tracker flex-center">
         <div class="cover" [ngStyle]="{'top.%': coverPosition}"></div>
         <div class="line">
-          <div *ngFor="let data of aboutMeData; let i = index;" class="point flex-center" [ngClass]="{'active': showTimeline(i)}">
+          <div 
+            id="timelinePoint-{{i}}"
+            *ngFor="let data of aboutMeData; let i = index;"
+            class="point flex-center"
+            [ngClass]="{'active': showTimelineContent(i)}"
+            (click)="scrollToTimeline(i)">
             <span>{{data.year}}</span>
           </div>
         </div>
       </div>
       <div class="details">
         <ng-container *ngFor="let data of aboutMeData; let i = index;">
-          <div *ngIf="showTimeline(i)">
-            <h1>{{data.title}}</h1>
+          <div *ngIf="showTimelineContent(i)">
+            <h1 class="subtitle">{{data.title}}</h1>
           </div>
         </ng-container>
       </div>

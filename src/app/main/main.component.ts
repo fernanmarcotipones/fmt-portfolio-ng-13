@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Subscription } from 'rxjs';
 import { bottomContentAnimation, leftContentAnimation, menuAnimation, rightContentAnimation } from '../shared/content.animation';
 import { ContentService } from '../shared/content.service';
+import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'fmt-main',
@@ -21,10 +23,16 @@ export class MainComponent implements OnInit, OnDestroy {
     if (this.content.nativeElement.getBoundingClientRect().top <= 0) {
       this.showContent = true;
     }
+
+    this.checkBottomPage()
   }
+    
 
   @ViewChild('content')
   public content!: ElementRef;
+
+  @ViewChild('main')
+  public main!: ElementRef;
 
   public showContent: boolean = false;
   
@@ -35,6 +43,10 @@ export class MainComponent implements OnInit, OnDestroy {
   public contentSub!: Subscription;
 
   public positionSub!: Subscription;
+
+  public scrollDownIcon: IconProp = faAngleDoubleDown;
+
+  public isBottomPage: boolean = false;
 
   constructor(private contentService: ContentService) { }
 
@@ -50,6 +62,15 @@ export class MainComponent implements OnInit, OnDestroy {
 
   public showSubContent(subComponent: any) {
     subComponent.showContent = true;
+    this.checkBottomPage();
+  }
+
+  public checkBottomPage(): void {
+    if (this.main) {
+      const scrollPosition = window.innerHeight + window.pageYOffset;
+      const maxHeight = this.main.nativeElement.scrollHeight;
+      this.isBottomPage = scrollPosition === maxHeight;
+    }
   }
 
   ngOnDestroy(): void {
