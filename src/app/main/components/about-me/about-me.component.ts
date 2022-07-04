@@ -1,9 +1,9 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ContentService } from 'src/app/shared/content.service';
-import { ContentBase } from '../../../shared/content-base';
+import { ContentService } from 'src/app/shared/services/content.service';
+import { ContentBase } from '../../../shared/components/content-base';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { leftContentAnimation } from 'src/app/shared/content.animation';
+import { leftContentAnimation } from 'src/app/shared/animations/content.animation';
 
 interface TimelineScope {
   min: number;

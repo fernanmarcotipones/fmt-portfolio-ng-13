@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Subscription } from 'rxjs';
-import { bottomContentAnimation, leftContentAnimation, menuAnimation, rightContentAnimation } from '../shared/content.animation';
-import { ContentService } from '../shared/content.service';
+import { bottomContentAnimation, leftContentAnimation, menuAnimation, rightContentAnimation } from '../shared/animations/content.animation';
+import { ContentService } from '../shared/services/content.service';
 import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

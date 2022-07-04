@@ -9,6 +9,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { ContactMeComponent } from './components/contact-me/contact-me.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     FontAwesomeModule,
+    DirectivesModule,
   ],
 })
 export class MainModule { }

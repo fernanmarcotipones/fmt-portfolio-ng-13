@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
-import { ContentService } from './shared/content.service';
+import { ContentService } from './shared/services/content.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({

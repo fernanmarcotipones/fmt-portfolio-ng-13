@@ -1,6 +1,6 @@
 <div #aboutMe id="about-me" [ngStyle]="{'height.vh': totalHeight}">
   <div *ngIf="showContent" class="content">
-    <div class="title">
+    <div class="title" testClick>
       <h1>About Me</h1>
     </div>
     <div *ngIf="showTimeline" class="timeline flex-center" @leftContentAnimation>
